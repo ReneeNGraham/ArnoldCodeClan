@@ -1,8 +1,10 @@
 package vehicles;
 
+import behaviours.IBuyable;
 import behaviours.IRoar;
+import people.Customer;
 
-public abstract class Vehicle {
+public abstract class Vehicle implements IBuyable {
 
     private double price;
     private String colour;
@@ -37,6 +39,15 @@ public abstract class Vehicle {
     public void setEngine(IRoar engine) {
         this.engine = engine;
     }
+
+    public boolean canBuy(Customer customer) {
+        if (customer.getMoney() >= getPrice()) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
 }
 
 
